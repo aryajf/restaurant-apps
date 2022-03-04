@@ -1,4 +1,5 @@
 import UrlParser from '../../routes/url-parser';
+import FavoriteButtonInitiator from '../../utils/favorite-button-initiator';
 
 const Detail = {
   async render() {
@@ -6,6 +7,7 @@ const Detail = {
       <div id="detail">
         <div class="container" id="restaurant-detail"></div>
       </div>
+      <div id="favoriteButtonContainer"></div>
     `;
   },
 
@@ -13,10 +15,11 @@ const Detail = {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const detailRestaurant = document.querySelector('#restaurant-detail');
     detailRestaurant.innerHTML = '';
+    let showRestaurant;
 
     fetch(`https://restaurant-api.dicoding.dev/detail/${url.id}`).then((response) => response.json())
       .then((restaurantData) => {
-        console.log(restaurantData);
+        showRestaurant = restaurantData.restaurant;
         detailRestaurant.innerHTML = `
           <div class="container">
             <div class="image-container">
@@ -64,6 +67,18 @@ const Detail = {
             <div>${review.review}</div>
             <div>${review.date}</div>
           </div>`;
+        });
+
+        FavoriteButtonInitiator.init({
+          favoriteButtonContainer: document.querySelector('#favoriteButtonContainer'),
+          restaurant: {
+            id: showRestaurant.id,
+            name: showRestaurant.name,
+            pictureId: showRestaurant.pictureId,
+            city: showRestaurant.city,
+            rating: showRestaurant.rating,
+            description: showRestaurant.description,
+          },
         });
       }).catch(() => {
         alert('Koneksi jaringan tidak stabil untuk menampilkan data restaurant');

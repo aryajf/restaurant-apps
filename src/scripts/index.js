@@ -23,6 +23,7 @@ window.addEventListener('load', () => {
 hamburgerButtonElement.addEventListener('click', (event) => {
   drawerElement.classList.toggle('open');
   event.stopPropagation();
+  event.preventDefault();
 });
 
 mainElement.addEventListener('click', (event) => {

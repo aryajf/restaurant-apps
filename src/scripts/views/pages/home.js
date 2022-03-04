@@ -1,7 +1,7 @@
 const Home = {
   async render() {
     return `
-      <img id="hero-element" src="./images/heros/hero-image_1.jpg" alt="Gambar Utama">
+      <img id="hero-element" src="./images/heros/hero-image_1.jpg">
       <h1 id="explore-title">Explore Restaurant</h1>
       <div id="explore">
           <div class="container" id="restaurant-content"></div>

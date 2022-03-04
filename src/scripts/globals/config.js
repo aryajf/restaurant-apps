@@ -1,5 +1,5 @@
 const CONFIG = {
-  CACHE_NAME: new Date().toISOString(),
+  CACHE_NAME: 'restaurant-apps-v1',
   DATABASE_NAME: 'restaurant-apps',
   DATABASE_VERSION: 1,
   OBJECT_STORE_NAME: 'restaurants',

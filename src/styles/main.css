@@ -5,6 +5,27 @@
     padding: 0;
 }
 
+/*
+   favorite
+*/
+
+.favorite {
+    font-size: 18px;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    background-color: #db0000;
+    color: white;
+    border: 0;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 button, a, input, textarea{
     padding: 44px;
 }
@@ -176,15 +197,60 @@ nav ul li a{
 #restaurant-content p{
     margin: 20px 0 0;
 }
+#restaurant-detail{
+    margin: 20px;
+}
 
-@media screen and (min-width: 1510px) {
+#restaurant-detail .image-container{
+    display: flex;
+    justify-content: center;
+}
+
+#restaurant-detail img{
+    max-width: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    max-height: 500px;
+}
+#restaurant-detail .content{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#restaurant-detail hr{
+    margin: 20px 0;    
+}
+
+#restaurant-detail #menus{
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: center;
+}
+
+#restaurant-detail #menus #foods{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#restaurant-detail #menus #drinks{
+    margin-top: 20px;
+}
+
+#restaurant-detail #reviews{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+#restaurant-detail #reviews .review{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 1260px) {
     #explore .container{
         grid-template-rows: none;
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
-@media screen and (min-width: 1200px) and (max-width: 1510px){
+@media screen and (min-width: 1200px) and (max-width: 1260px){
     #explore .container{
         grid-template-rows: none;
         grid-template-columns: repeat(2, 1fr);
@@ -212,5 +278,12 @@ nav ul li a{
         padding: 44px;
         margin: 0 2px;
         color: #EEEDDE;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #restaurant-detail #reviews{
+        display: grid;
+        grid-template-columns: auto auto;
     }
 }

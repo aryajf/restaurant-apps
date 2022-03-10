@@ -1,7 +1,10 @@
 const Home = {
   async render() {
     return `
-      <img id="hero-element" src="./images/heros/hero-image_1.jpg">
+      <picture>
+        <source media="(max-width: 768px)" srcset="./images/hero-image_1-small.jpg">
+        <img id="hero-element" src='./images/hero-image_1-large.jpg' alt="Gambar Utama"></img>
+      </picture>
       <h1 id="explore-title">Explore Restaurant</h1>
       <div id="explore">
           <div class="container" id="restaurant-content"></div>
@@ -17,7 +20,7 @@ const Home = {
       .then((restaurantData) => {
         restaurantData.restaurants.forEach((restaurant) => {
           const restaurantBox = document.createElement('div');
-          restaurantBox.innerHTML = `<img class="images" src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}" alt="${restaurant.name}" alt='Gambar Restaurant ${restaurant.name}'>
+          restaurantBox.innerHTML = `<img class="images lazyload" data-src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}" alt="${restaurant.name}" alt='Gambar Restaurant ${restaurant.name}'>
           <a href="/#/detail/${restaurant.id}"><h2 class="text-center">${restaurant.name}</h2></a>
           <h4 class="text-center">Lokasi : ${restaurant.city}</h4>
           <h4 class="text-center">Rating : ${restaurant.rating}/5</h4>

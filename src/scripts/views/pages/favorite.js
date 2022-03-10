@@ -18,7 +18,7 @@ const Favorite = {
 
     restaurants.forEach((restaurant) => {
       const restaurantBox = document.createElement('div');
-      restaurantBox.innerHTML = `<img class="images" src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}" alt="${restaurant.name}" alt='Gambar Restaurant ${restaurant.name}'>
+      restaurantBox.innerHTML = `<img class="images lazyload" data-src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}" alt="${restaurant.name}" alt='Gambar Restaurant ${restaurant.name}'>
       <a href="/#/detail/${restaurant.id}"><h2 class="text-center">${restaurant.name}</h2></a>
       <h4 class="text-center">Lokasi : ${restaurant.city}</h4>
       <h4 class="text-center">Rating : ${restaurant.rating}/5</h4>

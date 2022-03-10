@@ -1,19 +1,19 @@
-Feature('favoriting Restaurants');
-Before((I) => {
+Feature('Favoriting Restaurants');
+Before(({ I }) => {
   I.amOnPage('/#/favorite');
 });
-Scenario('showing empty favorited restaurants', (I) => {
+Scenario('showing empty favorited restaurants', ({ I }) => {
   I.seeElement('#query');
   // I.seeElement('.query'); // membuat test menjadi gagal
   I.see('Tidak ada film untuk ditampilkan', '.restaurant-item__not__found');
 });
-Scenario('favoriting one restaurant', (I) => {
+Scenario('favoriting one restaurant', ({ I }) => {
   I.see('Tidak ada film untuk ditampilkan', '.restaurant-item__not__found');
   I.amOnPage('/');
   // … kita akan mengisi uji coba berikutnya …
 });
 
-Scenario('favoriting one restaurant', (I) => {
+Scenario('favoriting one restaurant', ({ I }) => {
   I.see('Tidak ada film untuk ditampilkan', '.restaurant-item__not__found');
 
   I.amOnPage('/');

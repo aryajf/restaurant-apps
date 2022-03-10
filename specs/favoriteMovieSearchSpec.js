@@ -59,12 +59,6 @@ describe('Searching restaurants', () => {
     presenter._showFoundRestaurants([{ id: 1, title: 'Satu' }]);
     expect(document.querySelectorAll('.restaurant__title').item(0).textContent)
       .toEqual('Satu');
-  });
-
-  it('should show the title of the found restaurants', () => {
-    presenter._showFoundRestaurants([{ id: 1, title: 'Satu' }]);
-    expect(document.querySelectorAll('.restaurant__title').item(0).textContent)
-      .toEqual('Satu');
 
     presenter._showFoundRestaurants(
       [{ id: 1, title: 'Satu' }, { id: 2, title: 'Dua' }],

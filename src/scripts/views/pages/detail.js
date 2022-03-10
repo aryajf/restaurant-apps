@@ -1,5 +1,6 @@
 import UrlParser from '../../routes/url-parser';
-import FavoriteButtonInitiator from '../../utils/favorite-button-initiator';
+import FavoriteButtonPresenter from '../../utils/favorite-button-presenter';
+import FavoriteRestaurantIdb from '../../data/favoriterestaurant-idb';
 
 const Detail = {
   async render() {
@@ -69,8 +70,9 @@ const Detail = {
           </div>`;
         });
 
-        FavoriteButtonInitiator.init({
+        FavoriteButtonPresenter.init({
           favoriteButtonContainer: document.querySelector('#favoriteButtonContainer'),
+          favoriteRestaurants: FavoriteRestaurantIdb,
           restaurant: {
             id: showRestaurant.id,
             name: showRestaurant.name,

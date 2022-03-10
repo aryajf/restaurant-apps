@@ -1,3 +1,4 @@
+import { createRestaurantItemTemplate } from '../templates/template-creator';
 import FavoriteRestaurantIdb from '../../data/favoriterestaurant-idb';
 
 const Favorite = {
@@ -5,27 +6,25 @@ const Favorite = {
     return `
       <div id="explore">
         <h1 style="text-align:center">Restaurant Favorite mu</h1>
-        <div class="container" id="restaurant-content"></div>
+        <div class="container" id="restaurant-content">
+          <div class="restaurant-item__not__found">
+            <h5 style="text-align:center">Tidak ada restaurant untuk ditampilkan</h5>
+          </div>
+        </div>
       </div>
     `;
   },
 
   async afterRender() {
     const listRestaurant = document.querySelector('#restaurant-content');
-    listRestaurant.innerHTML = '';
+    const favoritedRestaurants = await FavoriteRestaurantIdb.getAllRestaurants();
 
-    const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
-
-    restaurants.forEach((restaurant) => {
-      const restaurantBox = document.createElement('div');
-      restaurantBox.innerHTML = `<img class="images lazyload" data-src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}" alt="${restaurant.name}" alt='Gambar Restaurant ${restaurant.name}'>
-      <a href="/#/detail/${restaurant.id}"><h2 class="text-center">${restaurant.name}</h2></a>
-      <h4 class="text-center">Lokasi : ${restaurant.city}</h4>
-      <h4 class="text-center">Rating : ${restaurant.rating}/5</h4>
-      <p>${restaurant.description}</p>`;
-
-      listRestaurant.appendChild(restaurantBox);
-    });
+    if (favoritedRestaurants.length !== 0) {
+      listRestaurant.innerHTML = '';
+      favoritedRestaurants.forEach((restaurant) => {
+        listRestaurant.innerHTML += createRestaurantItemTemplate(restaurant);
+      });
+    }
   },
 };
 
